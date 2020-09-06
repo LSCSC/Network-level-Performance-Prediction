@@ -6,7 +6,7 @@ import keras.backend as K
 import os
 import model_set as ms
 import numpy as np
-import snapshot_tti_individual_dr as sti
+#import snapshot_tti_individual_dr as sti
 import pickle
 import matplotlib.pyplot as plt
 import copy
@@ -19,10 +19,10 @@ def prepare_data(path,pkl_name,snapshot_name=None,airview_name=None,std_name='st
         with open(pkl_name, 'rb') as df:
             x,y,a,z = pickle.load(df)
     except FileNotFoundError:
-        infos = sti.load_from_json(path,snapshot_name,airview_name)
-        x = infos['features']
-        y = infos['rates']
-        a = infos['acks']
+#        infos = sti.load_from_json(path,snapshot_name,airview_name)
+#        x = infos['features']
+#        y = infos['rates']
+#        a = infos['acks']
 
         if pre_only:
             x,z = zero_paddingx(x,h=20)
