@@ -203,7 +203,7 @@ if __name__ == '__main__':
     #l1,l2,l_cqi=layer_split(X_train)
 
 
-    for tl in range(25,50):
+    for tl in range(1):
         record_metrics2=list()
         loss=float('inf')
         model_type = ms.jf_mapev
@@ -313,9 +313,9 @@ if __name__ == '__main__':
                         w = np.maximum(1-w,0)
                         model_A.fit(temp_train,temp_label, epochs=1, batch_size=64, verbose=0,sample_weight=w)
 
-                #if ii==6:
-                #    model_A.save(path_model_A, overwrite=True)
-                #    model_B.save(path_model_B, overwrite=True)
+                if ii==ne:
+                    model_A.save(path_model_A, overwrite=True)
+                    model_B.save(path_model_B, overwrite=True)
 
             else:
                 break
@@ -328,8 +328,8 @@ if __name__ == '__main__':
 
     #model_A = load_model(path_model_A)
     #model_B = load_model(path_model_B)
-    #predicts = (model_A.predict(X_test).flatten()+model_B.predict(X_test).flatten())/2
-    #predicts = model.predict([test_l1,test_l2,test_l_cqi])
+    predicts = (model_A.predict(X_test).flatten()+model_B.predict(X_test).flatten())/2
+
 
     #predicts = model.predict(X_test)
         hist_name = os.path.join(path_data, 'hist_'+oname+'.pkl')
